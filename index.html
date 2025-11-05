@@ -1449,6 +1449,7 @@
 
     .espaco_botao_whatsapp .botao {
       justify-content: center !important;
+      margin-left: 16px !important;
     }
 
     .gallery-card img {
@@ -1593,6 +1594,59 @@
       border-bottom-right-radius: 7px;
       border-bottom-left-radius: 7px;
     }
+
+    .mosaico {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      margin-left: 16px;
+    }
+
+    .mosaico-img {
+      width: 49%;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+      border-bottom-left-radius: 7px;
+    }
+
+    .lista-footer {
+      gap: 26px;
+    }
+
+    .lista-footer .guten-icon-list-item {
+      margin-right: 0px !important
+    }
+
+    .lista-footer .guten-icon-list-item a {
+      margin-left: 0px !important
+    }
+
+    @media screen and (max-width: 1024px) {
+      .mosaico {
+        margin-left: 0px;
+      }
+
+
+    }
+
+    @media screen and (min-width: 768px) {
+      .galeria {
+        margin: 0 20px;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+    .guten-ZBUjEU > .sticky-wrapper > .guten-column-wrapper, .guten-ZBUjEU > .guten-column-wrapper {
+      margin-bottom: 0px !important;
+    }
+
+    .guten-ZEY5In > .sticky-wrapper > .guten-column-wrapper, .guten-ZEY5In > .guten-column-wrapper {
+      margin-bottom: 0px !important;
+    }
+
+    
+  }
   </style>
   <style id="wp-block-template-skip-link-inline-css">
     .skip-link.screen-reader-text {
@@ -1950,29 +2004,13 @@
                       width="928" alt="" loading="lazy" />
                   </div>
                 </div>
-                <div class="wp-block-gutenverse-image guten-element guten-image guten-mosaico-2">
-                  <div class="guten-image-wrapper">
-                    <img decoding="async" class="gutenverse-image-box-filled" src="/src/img/ciclistas.jpg" height="309"
-                      width="464" alt="" loading="lazy" />
-                  </div>
+                <div class="mosaico">
+                  <img class="mosaico-img" decoding="async" class="gutenverse-image-box-filled" src="/src/img/ciclistas.jpg" height="309" width="464" alt="" loading="lazy"/>
+                  <img class="mosaico-img" decoding="async" class="gutenverse-image-box-filled" src="/src/img/santo_andre_3.jpg" height="309" width="464" alt="" loading="lazy"/>
                 </div>
-                <div class="wp-block-gutenverse-image guten-element guten-image guten-mosaico-3">
-                  <div class="guten-image-wrapper">
-                    <img decoding="async" class="gutenverse-image-box-filled" src="/src/img/santo_andre_3.jpg" height="682"
-                      width="682" alt="" loading="lazy" />
-                  </div>
-                </div>
-                  <div class="wp-block-gutenverse-image guten-element guten-image guten-mosaico-4">
-                  <div class="guten-image-wrapper">
-                    <img decoding="async" class="gutenverse-image-box-filled" src="/src/img/mosaico_2.png" height="700"
-                      width="700" alt="" loading="lazy" />
-                  </div>
-                </div>
-                <div class="wp-block-gutenverse-image guten-element guten-image guten-mosaico-5">
-                  <div class="guten-image-wrapper">
-                    <img decoding="async" class="gutenverse-image-box-filled" src="/src/img/mosaico_3.jpg" height="700"
-                      width="700" alt="" loading="lazy" />
-                  </div>
+                <div class="mosaico">
+                  <img class="mosaico-img" decoding="async" class="gutenverse-image-box-filled" src="/src/img/mosaico_2.png" height="309" width="464" alt="" loading="lazy"/>
+                  <img class="mosaico-img" decoding="async" class="gutenverse-image-box-filled" src="/src/img/mosaico_3.jpg" height="309" width="464" alt="" loading="lazy"/>
                 </div>
               </div>
             </div>
@@ -2203,31 +2241,6 @@
                               </div>
                             </div>
                           </div>
-
-                          <div
-                            class="guten-ypEpvG animated guten-element-hide tablet-fadeInUp hide-desktop guten-image-box guten-element style-default">
-                            <div class="inner-container">
-                              <div class="image-box-header">
-                                <a href="#"><img decoding="async" class="gutenverse-image-box-filled"
-                                    src="/wp-content/uploads/2025/10/marathon-runners-runclub.webp" height="451"
-                                    width="676" loading="lazy" /></a>
-                              </div>
-                              <div class="image-box-body">
-                                <div class="body-inner">
-                                  <h3 class="body-title icon-position-before">
-                                    <i></i><span>National Convention</span>
-                                  </h3>
-                                  <p class="body-description">
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit&hellip;
-                                  </p>
-                                  <div class="guten-element guten-button-wrapper guten-hyW1ct">
-                                    <a class="guten-button guten-button-sm" href="#"><span>Learn More</span></a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
 
@@ -2261,15 +2274,13 @@
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
 
-                      <div
-                        class="wp-block-gutenverse-column guten-element guten-column guten-vX1i56 hide-tablet hide-mobile">
-                        <div class="guten-column-wrapper" data-id="vX1i56">
+                      <div class="wp-block-gutenverse-column guten-element guten-column guten-8yaaSh">
+                        <div class="guten-column-wrapper" data-id="8yaaSh">
                           <div
-                            class="guten-DyHHqX animated guten-element-hide desktop-fadeInUp guten-image-box guten-element style-default">
+                            class="guten-LhugIH animated guten-element-hide desktop-fadeInUp guten-image-box guten-element style-default">
                             <div class="inner-container">
                               <div class="image-box-header">
                                 <a href="#"><img decoding="async" class="gutenverse-image-box-filled"
@@ -2296,12 +2307,9 @@
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>
-
-
                 </div>
         </section>
       </div>
@@ -2312,7 +2320,7 @@
   </div>
 
   <div class="section-wrapper" data-id="H0lt4Q">
-    <section class="wp-block-gutenverse-section guten-element guten-section guten-H0lt4Q layout-boxed align-stretch">
+    <section class="wp-block-gutenverse-section guten-element guten-section guten-H0lt4Q layout-boxed align-stretch grupo-whatsapp">
       <div class="guten-container guten-column-gap-no">
         <div class="wp-block-gutenverse-column guten-element guten-column espaco_texto_whatsapp">
           <div class="guten-column-wrapper" data-id="2ygLn9">
@@ -2667,7 +2675,7 @@
               <div class="heading-line bottom"></div>
             </div>
 
-            <div class="section-wrapper" data-id="WjmP30">
+            <div class="section-wrapper galeria" data-id="WjmP30">
               <section
                 class="wp-block-gutenverse-section guten-element guten-section guten-WjmP30 layout-fullwidth align-stretch">
                 <div class="guten-container guten-column-gap-no">
@@ -2861,7 +2869,7 @@
               </div>
             </div>
 
-            <div class="guten-element guten-icon-list guten-v2kGSQ inline-icon-list">
+            <div class="guten-element guten-icon-list guten-v2kGSQ inline-icon-list lista-footer">
               <div class="guten-element guten-icon-list-item guten-mQHPyA">
                 <a id="guten-mQHPyA" href="#home"><i class="fas fa-check"></i><span class="list-text">Home</span></a>
               </div>
