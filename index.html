@@ -1610,6 +1610,55 @@
       border-bottom-left-radius: 7px;
     }
 
+    #meu-toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1050;
+
+      background-color: var(--primary-color);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+      transform: translateY(20px);
+    }
+
+    #meu-toast.toast-mostrar {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .toast-conteudo strong {
+      color: var(--wp--preset--color--theme-7);
+      font-family: var(--gutenverse-font-family-QLV5sm);
+      font-size: var(--gutenverse-font-size-QLV5sm);
+      font-weight: var(--gutenverse-font-weight-QLV5sm);
+      text-transform: var(--gutenverse-font-transform-QLV5sm);
+      font-style: var(--gutenverse-font-style-QLV5sm);
+      text-decoration: var(--gutenverse-font-decoration-QLV5sm);
+      line-height: var(--gutenverse-font-lineHeight-QLV5sm);
+      letter-spacing: var(--gutenverse-font-spacing-QLV5sm);
+      margin-bottom: 15px;
+    }
+
+    .toast-conteudo p {
+      text-align: left;
+      color: var(--wp--preset--color--theme-7);
+      font-family: var(--gutenverse-font-family-Un2ixx);
+      font-size: var(--gutenverse-font-size-Un2ixx);
+      font-weight: var(--gutenverse-font-weight-Un2ixx);
+      text-transform: var(--gutenverse-font-transform-Un2ixx);
+      font-style: var(--gutenverse-font-style-Un2ixx);
+      line-height: var(--gutenverse-font-lineHeight-Un2ixx);
+      letter-spacing: var(--gutenverse-font-spacing-Un2ixx);
+    }
+
     .lista-footer {
       gap: 26px;
     }
@@ -1797,7 +1846,6 @@
               <div class="guten-column-wrapper" data-id="dVfIO6">
                 <div class="wp-block-gutenverse-image guten-element guten-image guten-nzJzCr">
                   <div class="guten-image-wrapper">
-                    <!-- <h2 style="color: white;">ON SPORT</h1> -->
                     <img decoding="async" class="gutenverse-image-box-filled" src="src/img/logos/logo-on-sport.png"
                       height="59" width="300" />
                   </div>
@@ -2399,7 +2447,6 @@
                                 <span class="heading-title">$289,90</span>
                               </h3>
                             </div>
-                            <!-- <span class="subtitulo-valores">Primeiro Lote (Vagas Limitadas)</span> -->
                           </div>
                         </div>
                       </div>
@@ -2423,7 +2470,6 @@
                                 <span class="heading-title">$149,90</span>
                               </h3>
                             </div>
-                            <!-- <span class="subtitulo-valores">Primeiro Lote (Vagas Limitadas)</span> -->
                           </div>
                         </div>
                       </div>
@@ -2672,7 +2718,6 @@
         <div class="wp-block-gutenverse-column guten-element guten-column guten-O57xqH">
           <div class="guten-column-wrapper" data-id="O57xqH">
             <div class="guten-element guten-advanced-heading guten-nH0FXH animated guten-element-hide desktop-fadeInUp">
-              <!-- <span class="heading-subtitle">Um pouco das edições anteriores</span> -->
               <div class="heading-section outside-line">
                 <h2 class="heading-title"><span class="heading-title">Galeria de imagens</span><span
                     class="heading-focus"></span></h2>
@@ -2800,8 +2845,9 @@
                         class="wp-block-gutenverse-column guten-element guten-column guten-ATFpVT animated guten-element-hide desktop-fadeInUp form-content">
                         <div class="guten-column-wrapper" data-id="ATFpVT">
                           <form class="guten-element guten-form-builder guten-fQGRnG"
+                              id="my-form"
                               data-form-id="576"
-                              action="https://formspree.io/f/xrbondlr"
+                              action="https://formspree.io/f/xzzknwjd"
                               method="POST"
                             >
                             <div
@@ -2850,9 +2896,7 @@
                               </div>
                             </div>
                             <div class="guten-element guten-button-wrapper guten-4GC0TS">
-                              <!-- <a class="guten-button animated guten-element-hide desktop-fadeInLeft guten-button-sm"
-                                href="#"><span>Enviar Email</span></a> -->
-                                <button class="guten-button animated guten-element-hide desktop-fadeInLeft guten-button-sm" type="submit"><span>Enviar Email</span></button>
+                              <button class="guten-button animated guten-element-hide desktop-fadeInLeft guten-button-sm" type="submit"><span>Enviar Email</span></button>
                             </div>
                           </form>
                         </div>
@@ -2954,6 +2998,12 @@
     </section>
   </div>
   </div>
+  <div id="meu-toast" class="toast-escondido">
+        <div class="toast-conteudo">
+            <strong>Obrigado!</strong>
+            <p>Sua mensagem foi enviada com sucesso.</p>
+        </div>
+    </div>
   </div>
   <script type="speculationrules">
       {
@@ -3061,6 +3111,58 @@
     //   isAdmin: "",
     // };
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("my-form");
+        var toast = document.getElementById("meu-toast");
+        
+        var toastTimer; 
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            
+            var dados = new FormData(form);
+            
+            var botao = form.querySelector("button[type='submit']");
+            var textoOriginalBotao = botao.innerHTML;
+            botao.innerHTML = "<span>Enviando...</span>";
+            botao.disabled = true;
+
+            fetch(form.action, {
+                method: "POST",
+                body: dados,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    form.reset(); 
+                    mostrarToast();
+                } else {
+                    response.json().then(function() {
+                        alert("Oops! Houve um problema. Tente novamente.");
+                    });
+                }
+            })
+            .catch(function(error) {
+                alert("Erro ao conectar. Verifique sua internet.");
+            })
+            .finally(function() {
+                botao.innerHTML = textoOriginalBotao;
+                botao.disabled = false;
+            });
+        });
+
+        function mostrarToast() {
+            clearTimeout(toastTimer);
+
+            toast.classList.add("toast-mostrar");
+
+            toastTimer = setTimeout(function() {
+                toast.classList.remove("toast-mostrar");
+            }, 5000);
+        }
+    });
+</script>
   <script src="/wp-content/plugins/gutenverse-form/lib/framework/assets/js/corefrontend.js?ver=2.1.2"
     id="gutenverse-frontend-event-js"></script>
   <script src="/wp-content/plugins/gutenverse-form/assets/js/frontend.js?ver=2.1.2"
